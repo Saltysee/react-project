@@ -6,19 +6,19 @@ namespace react_backend.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class AtomicClockController : ControllerBase
     {
         
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<AtomicClockController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public AtomicClockController(ILogger<AtomicClockController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public WeatherForecast Get()
+        public AtomicClock Get()
         {
             //default Windows time server
             const string ntpServer = "time.windows.com";
@@ -66,7 +66,7 @@ namespace react_backend.Controllers
             //**UTC** time
             var networkDateTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds((long)milliseconds);
 
-            return new WeatherForecast { Date = networkDateTime.ToLocalTime() };
+            return new AtomicClock { Date = networkDateTime.ToLocalTime() };
         }
 
         // stackoverflow.com/a/3294698/162671

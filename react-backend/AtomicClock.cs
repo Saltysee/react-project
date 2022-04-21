@@ -1,6 +1,6 @@
 namespace react_backend
 {
-    public class WeatherForecast
+    public class AtomicClock
     {
         public DateTime Date { get; set; }
 
